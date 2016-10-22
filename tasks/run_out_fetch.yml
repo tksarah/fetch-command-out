@@ -1,0 +1,5 @@
+- name: Run command and stdout
+  raw: "{{ command }} > {{ savefile }}"
+
+- name: Fetch "{{ savefile }}"
+  fetch: src="{{ savefile }}" dest="{{ savedir }}"
