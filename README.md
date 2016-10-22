@@ -83,7 +83,8 @@ Example Playbook
 
   pre_tasks:
     - name: Pre get command list
-      local_action: raw ./tools/create_var.pl "{{ inputcommand }}"
+      local_action: raw ./roles/tksarah.fetch-command-out/tools/create_vars.pl "{{ inputcommand }}"
+      become: false
 
   roles:
     - tksarah.fetch-command-out
