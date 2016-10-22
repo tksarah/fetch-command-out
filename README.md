@@ -1,11 +1,11 @@
-fetch-files
+fetch-command-out
 =========
 
-Ansible Role: fetch-file
+Ansible Role: fetch-command-out
 ------------
 
 As executing the playbook, the role is copied from the target host in background and save it as a text file.
-The role allows to get the list of specific files simply.
+The role allows to get the command list of specific output files simply.
 
 Install
 ------------
@@ -42,7 +42,7 @@ lists:
 ```
 
 This roles was created with automatic when you run a playbook.
-You only create a text file listed to get files below,
+You only create a text file listed to run commands below,
 
 
 ```
@@ -77,18 +77,16 @@ Example Playbook
 
   vars_prompt:
     - { name: "target" , prompt: "Input target host" ,  default: all , private: no }
-    - { name: "inputfile" , prompt: "Input your file list" , default: sample_filelist.txt , private: no }
+    - { name: "inputcommand" , prompt: "Input your command list" , default: sample_comlist.txt , private: no }
+    - { name: "remtemp" , prompt: "Input remote temp directory " , default: /tmp/remtemp , private: no }
     - { name: "savedir" , prompt: "Input a save directory" , default: fetched , private: no }
 
   pre_tasks:
-    - block:
-        - name: Pre setup (create lists for fetch)
-          local_action: raw ./roles/tksarah.fetch-files/tools/create_vars.pl "{{ inputfile }}"
-      become: false
+    - name: Pre get command list
+      local_action: raw ./tools/create_var.pl "{{ inputcommand }}"
 
   roles:
-    - tksarah.fetch-files
-
+    - tksarah.fetch-command-out
 ```
 
 License
@@ -99,4 +97,4 @@ BSD
 Author Information
 ------------------
 
-fetch-file role was written by: T.Kuramochi
+fetch-command-out role was written by: T.Kuramochi
