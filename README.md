@@ -41,8 +41,8 @@ lists:
   - { com: 'cat /etc/hosts' , ofile: 'cat_hosts' }
 ```
 
-This roles was created with automatic when you run a playbook.
-You only create a text file listed to run commands below,
+This vars file will be created with automatic when you run a playbook.
+All you have to do is create a text file as below.
 
 
 ```
