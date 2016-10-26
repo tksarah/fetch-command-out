@@ -6,13 +6,13 @@
   become_user: root
 
   vars:
-    - inputcommand: ./tests/sample_comlist.txt
+    - inputcommand: ./sample_comlist.txt
     - remtemp: /tmp/remtemp
     - savedir: fetched
 
   pre_tasks:
     - name: Pre get command list
-      raw: ./roles/tksarah.fetch-command-out/tools/create_vars.pl "{{ inputcommand }}"
+      raw: ./roles/fetch-command-out/tools/create_vars.pl "{{ inputcommand }}"
       become: false
       delegate_to: localhost
 
