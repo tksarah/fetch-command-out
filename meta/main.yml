@@ -1,6 +1,6 @@
 galaxy_info:
   author: Takeshi Kuramochi
-  description: Get on Copy Command line histories with Ansible Role
+  description: Get and Copy Command line histories with Ansible Role
   #company:
 
   # If the issue tracker for your role is not on github, uncomment the
