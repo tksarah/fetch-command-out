@@ -1,0 +1,3 @@
+'ls -l /etc','ls_l'
+'hostid','hostid_out'
+'cat /etc/hosts','cat_hosts'
