@@ -10,11 +10,5 @@
     - remtemp: /tmp/remtemp
     - savedir: fetched
 
-  pre_tasks:
-    - name: Pre get command list
-      raw: ./roles/fetch-command-out/tools/create_vars.pl "{{ inputcommand }}"
-      become: false
-      delegate_to: localhost
-
   roles:
     - fetch-command-out

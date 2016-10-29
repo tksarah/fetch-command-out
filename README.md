@@ -19,7 +19,6 @@ Requirements
 ------------
 
 * Ansible version 2.0 <
-* Perl
 
 Role Variables
 --------------
@@ -32,31 +31,21 @@ savedir: "fetched"
 remtemp: "/tmp/remtemp"
 ```
 
-**vars/com_vars.yml:**
-
-```
-lists:
-  - { com: 'ls -l /etc' , ofile: 'ls_l' }
-  - { com: 'hostid' , ofile: 'hostid_out' }
-  - { com: 'cat /etc/hosts' , ofile: 'cat_hosts' }
-```
-
-This vars file will be created with automatic when you run a playbook.
 All you have to do is create a text file as below.
 
 
 ```
-<command>,<output file>
-<command>,<output file>
-<command>,<output file>
+1,<command>,<output file>
+2,<command>,<output file>
+3,<command>,<output file>
 ```
 
 **Ex) sample_comlist.txt:**
 
 ```
-'ls -l /etc','ls_l'
-'hostid','hostid_out'
-'cat /etc/hosts','cat_hosts'
+1,"ls -l /etc","ls_l"
+2,"hostid","hostid_out"
+3,"cat /etc/hosts","cat_hosts"
 ```
 
 Dependencies
@@ -80,12 +69,6 @@ Example Playbook
     - { name: "inputcommand" , prompt: "Input your command list" , default: sample_comlist.txt , private: no }
     - { name: "remtemp" , prompt: "Input remote temp directory " , default: /tmp/remtemp , private: no }
     - { name: "savedir" , prompt: "Input a save directory" , default: fetched , private: no }
-
-  pre_tasks:
-    - name: Pre get command list
-      raw: ./roles/tksarah.fetch-command-out/tools/create_vars.pl "{{ inputcommand }}"
-      become: false
-      delegate_to: localhost
 
   roles:
     - tksarah.fetch-command-out
